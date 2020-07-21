@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/6a28e588a1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <button class="modal-open-btn">click</button>
+      <div class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+          <h1 class="modal-title">Login</h1>
+          <input class="id-input" type="text" placeholder="아이디" />
+          <input class="pw-input" type="text" placeholder="패스워드" />
+          <a href="#" class="forget-pw">비밀번호를 잊어버리셨나요?</a>
+          <button class="modal-close-btn"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+    </main>
+    <script src="./js/modal.js"></script>
+  </body>
+</html>

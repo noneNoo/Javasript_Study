@@ -1,0 +1,145 @@
+/* font-family: 'Sriracha', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-open-btn {
+  all: unset;
+  background-color: slateblue;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.modal {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.353);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  transition: 1s;
+}
+
+.modal-content {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 50%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(248, 245, 245);
+  border-radius: 1rem 1rem;
+  overflow: hidden;
+  padding: 3rem;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.353);
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+.modal-title {
+  margin: 0;
+  font-family: 'Sriracha', cursive;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.modal-close-btn {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 5rem;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal-close-btn > i {
+  color: slateblue;
+}
+
+.modal-close-btn:hover {
+  background-color: slateblue;
+}
+
+.modal-close-btn:hover i {
+  color: white;
+}
+
+input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  border: 0;
+  outline: 0;
+  background-color: rgb(230, 230, 230);
+}
+
+.forget-pw {
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  color: slateblue;
+}
+
+/*모달창이 히든 되었을 시!*/
+
+.modal.hidden {
+  visibility: hidden;
+}
+
+.modal.hidden .modal-overlay {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal.hidden .modal-content {
+  transform: scale(0);
+}
+
+button:active {
+  background-color: rgb(69, 53, 175);
+  transition: 0.1s;
+}
