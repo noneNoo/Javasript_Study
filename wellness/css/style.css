@@ -24,7 +24,7 @@ html {
 .ham-btn {
   cursor: pointer;
   position: absolute;
-  top: 1.1rem;
+  top: auto;
   right: 2rem;
   font-size: 1.4em;
   display: none;
@@ -313,13 +313,17 @@ footer p {
     display: flex;
   }
 
-  @media (max-width: 550px) {
-    html {
-      font-size: 11px;
+  @media (max-width: 580px) {
+    body {
+      font-size: 15px;
     }
 
-    .info .sub {
-      font-size: 1.2em;
+    .hd-box {
+      font-size: 1rem;
+    }
+
+    #visual-main {
+      font-size: 0.7em;
     }
   }
 
