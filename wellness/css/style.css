@@ -111,23 +111,25 @@ html {
   flex-wrap: wrap;
   max-width: 1000px;
   margin: 0 auto;
-  transform: translateY(-5%);
-  opacity: 0;
+  opacity: 1;
   transition: 1s;
 }
 
-.clubs.scroll {
+.club.showed {
+  transition: 1s;
   transform: translateY(0%);
   opacity: 1;
 }
 
 .club {
+  transform: translateY(-20%);
   cursor: pointer;
   width: 310px;
   border: 1px solid rgb(231, 231, 231);
   border-radius: 0.5em;
   overflow: hidden;
   margin: 10px;
+  opacity: 0;
 }
 .club .info {
   padding: 1em;

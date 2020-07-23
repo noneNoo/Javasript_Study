@@ -1,65 +1,77 @@
-const card = document.querySelectorAll('.clubs');
-const header = document.querySelector('.hd-box');
-const topBtn = document.querySelector('.topbtn');
+(function () {
+  const cards = document.querySelectorAll('.club');
+  const header = document.querySelector('.hd-box');
+  const topBtn = document.querySelector('.topbtn');
 
-let docScroll;
+  //스크롤양
+  let docScroll;
 
-//스크롤 이벤트
-function scrollHandelr() {
-  docScroll = window.pageYOffset;
-
-  let cardScroll1 = card[0].offsetTop;
-  let cardScroll2 = card[1].offsetTop;
-
-  //상단바 색상변경
-  if (docScroll != 0) {
-    header.classList.add('scroll');
-    topBtn.classList.add('scroll');
-  } else {
-    header.classList.remove('scroll');
-    topBtn.classList.remove('scroll');
-  }
-
-  //첫 번째 카드 슬라이드
-  if (docScroll > cardScroll1 - cardScroll1 / 2) {
-    card[0].classList.add('scroll');
-  }
-
-  //두 번째 카드 슬라이드
-  if (docScroll > cardScroll2 - cardScroll2 / 3) {
-    card[1].classList.add('scroll');
-  }
-}
-
-window.addEventListener('scroll', scrollHandelr);
-
-function hamClickHandelr(e) {
-  let targetElem = e.target;
-  while (!targetElem.classList.contains('ham-btn')) {
-    targetElem = targetElem.parentNode;
-
-    if (targetElem.nodeName == 'BODY') {
-      targetElem = null;
-      return;
-    }
-  }
-  header.classList.toggle('active');
-}
-
-header.addEventListener('click', hamClickHandelr);
-
-function topBtnClickHandler() {
-  scrollToTop();
-}
-
-function scrollToTop() {
-  let scrollInterval = setInterval(function () {
+  // header색상 변경 함수
+  function headerpaint() {
     if (docScroll != 0) {
-      window.scrollBy(0, -55);
+      header.classList.add('scroll');
+      topBtn.classList.add('scroll');
     } else {
-      clearInterval(scrollInterval);
+      header.classList.remove('scroll');
+      topBtn.classList.remove('scroll');
     }
-  }, 8);
-}
+  }
 
-topBtn.addEventListener('click', topBtnClickHandler);
+  // 슬라이더가 한 줄씩 나타나게 하는 함수
+  function cardShow() {
+    let winBottom = window.innerHeight + docScroll;
+    for (let i = 0; i < cards.length; i++) {
+      let cardHalfPosition = cards[i].offsetTop + cards[i].clientHeight / 2;
+
+      if (cardHalfPosition < winBottom) {
+        cards[i].classList.add('showed');
+      }
+    }
+  }
+
+  // 스크롤 이벤트 함수
+  function scrollHandelr() {
+    docScroll = window.pageYOffset;
+
+    headerpaint();
+    cardShow();
+  }
+
+  // 탑버튼 클릭 이벤트 함수
+  function scrollToTop() {
+    let scrollInterval = setInterval(function () {
+      if (docScroll != 0) {
+        window.scrollBy(0, -55);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 8);
+  }
+
+  //햄버거버튼 클릭 이벤트 함수
+  function hamClickHandelr(e) {
+    let targetElem = e.target;
+    while (!targetElem.classList.contains('ham-btn')) {
+      targetElem = targetElem.parentNode;
+
+      if (targetElem.nodeName == 'BODY') {
+        targetElem = null;
+        return;
+      }
+    }
+    header.classList.toggle('active');
+  }
+
+  function topBtnClickHandler() {
+    scrollToTop();
+  }
+
+  //탑버튼 클릭 이벤트
+  topBtn.addEventListener('click', topBtnClickHandler);
+
+  //햄버거버튼 클릭 이벤트
+  header.addEventListener('click', hamClickHandelr);
+
+  //스크롤 이벤트
+  window.addEventListener('scroll', scrollHandelr);
+})();
