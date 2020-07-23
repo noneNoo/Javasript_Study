@@ -21,10 +21,14 @@ html {
   color: white;
 }
 
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .ham-btn {
   cursor: pointer;
-  position: absolute;
-  top: auto;
   right: 2rem;
   font-size: 1.4em;
   display: none;
