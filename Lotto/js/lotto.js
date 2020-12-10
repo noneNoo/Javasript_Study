@@ -19,5 +19,13 @@ while (candidate.length > 0) {
   shuffle.push(value);
 }
 
+// 당첨 번호, 보너스 번호
 const winBalls = shuffle.slice(0, 6);
 const bonusBall = shuffle[6];
+
+// 당첨 번호 오름차수 정렬하기
+winBalls.sort((prev, curr) => {
+  // return하는 값이 0보다 크면 순서를 바꾼다
+  return prev - curr;
+});
+console.log(winBalls);
