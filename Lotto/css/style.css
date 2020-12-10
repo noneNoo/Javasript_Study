@@ -1,0 +1,39 @@
+#result {
+  display: flex;
+}
+
+h1 {
+  margin: 0;
+}
+
+.ball {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.yellow {
+  background-color: rgb(255, 236, 68);
+}
+
+.blue {
+  background-color: rgb(35, 126, 255);
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+  color: white;
+}
+
+.green {
+  background-color: green;
+}
