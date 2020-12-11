@@ -58,8 +58,13 @@ function paintBall(number, elem) {
 }
 
 // html에 공 생성해주기
-winNums.forEach((number) => {
-  paintBall(number, resultElem);
+winNums.forEach((number, index) => {
+  setTimeout(() => {
+    paintBall(number, resultElem);
+    console.log(number.length);
+  }, 500 * (index + 1));
 });
 
-paintBall(bonusBallNum, bonusElem);
+setTimeout(() => {
+  paintBall(bonusBallNum, bonusElem);
+}, 3500);
