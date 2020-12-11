@@ -64,9 +64,12 @@ h2 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 1px dashed transparent;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.5s;
+  transform: rotate(0deg);
   margin: 0 5px;
   font-size: 14px;
   color: white;
@@ -77,6 +80,7 @@ h2 {
 .question {
   /* background-color: rgb(228, 228, 228); */
   text-shadow: none;
+  transform: rotate(360deg);
   color: rgb(74, 74, 74);
   border-color: #191919;
   border: 1px dashed #191919;

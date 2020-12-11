@@ -1,6 +1,10 @@
 // 공을 그릴 부모태그를 가져오기
-const resultElem = document.querySelector('#win-balls');
-const bonusElem = document.querySelector('#bonus-ball');
+// const resultElem = document.querySelector('#win-balls');
+// const bonusElem = document.querySelector('#bonus-ball');
+
+// 공 자체를 가져오기
+const winballElems = document.querySelectorAll('.winball');
+const bonusballElem = document.querySelector('.bounsball');
 
 // 45개의 배열을 만들기
 const candidate = Array(45)
@@ -25,46 +29,44 @@ while (candidate.length > 0) {
 
 // 당첨 번호, 보너스 번호
 const winNums = shuffle.slice(0, 6);
-const bonusBallNum = shuffle[6];
+const bonusBallNum = [shuffle[6]];
 
 // 당첨 번호 오름차수 정렬하기
 winNums.sort((prev, curr) => {
   // return하는 값이 0보다 크면 순서를 바꾼다
   return prev - curr;
 });
-console.log(winNums);
 
 // html에 공을 그려주는 함수
-function paintBall(number, elem) {
-  const ballElem = document.createElement('article');
-  // 공 기본 스타일링
+// 인자로 ballElement를 하나씩 받고
+// 보너스번호, 당첨번호 array를 받고
+// array index를 받는다
+function paintBall(ballElem, arrayName, index) {
+  const ballNumber = arrayName[index];
+  ballElem.classList.remove('question');
   ballElem.classList.add('ball');
 
-  // 크기에 따라 색상 스타일링
-  if (number <= 10) {
+  if (ballNumber <= 10) {
     ballElem.classList.add('yellow');
-  } else if (number <= 20) {
+  } else if (ballNumber <= 20) {
     ballElem.classList.add('blue');
-  } else if (number <= 30) {
+  } else if (ballNumber <= 30) {
     ballElem.classList.add('red');
-  } else if (number <= 40) {
+  } else if (ballNumber <= 40) {
     ballElem.classList.add('black');
   } else {
     ballElem.classList.add('green');
   }
 
-  ballElem.innerText = number;
-  elem.appendChild(ballElem);
+  ballElem.innerHTML = arrayName[index];
 }
 
-// html에 공 생성해주기
-winNums.forEach((number, index) => {
+winballElems.forEach((ballElem, index) => {
   setTimeout(() => {
-    paintBall(number, resultElem);
-    console.log(number.length);
+    paintBall(ballElem, winNums, index);
   }, 500 * (index + 1));
 });
 
 setTimeout(() => {
-  paintBall(bonusBallNum, bonusElem);
+  paintBall(bonusballElem, bonusBallNum, 0);
 }, 3500);
