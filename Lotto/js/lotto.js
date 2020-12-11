@@ -1,6 +1,6 @@
 // 공을 그릴 부모태그를 가져오기
-const resultElem = document.querySelector('#result');
-const bonusElem = document.querySelector('#bonus');
+const resultElem = document.querySelector('#win-balls');
+const bonusElem = document.querySelector('#bonus-ball');
 
 // 45개의 배열을 만들기
 const candidate = Array(45)

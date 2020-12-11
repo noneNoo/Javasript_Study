@@ -8,11 +8,42 @@
   </head>
   <body>
     <main>
-      <h1>당첨 숫자</h1>
-      <div id="result"></div>
-      <span>보너스!</span>
-      <div id="bonus"></div>
-      <script src="./js/lotto.js"></script>
+      <h1 id="logo"><span>Lotto</span><span>6/45</span></h1>
+      <h2>당첨 결과</h2>
+      <h3>
+        <span id="year">2020</span>년<span id="month">12</span>월<span id="day"
+          >11</span
+        >일
+      </h3>
+      <div id="result">
+        <div id="win-balls">
+          <article class="ball question">?</article>
+          <article class="ball question">?</article>
+          <article class="ball question">?</article>
+          <article class="ball question">?</article>
+          <article class="ball question">?</article>
+          <article class="ball question">?</article>
+        </div>
+        <div id="plus-icon">
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-plus"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+            />
+          </svg>
+        </div>
+        <div id="bonus-ball">
+          <article class="ball question">?</article>
+        </div>
+      </div>
+      <!-- <script src="./js/lotto.js"></script> -->
     </main>
   </body>
 </html>
