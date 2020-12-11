@@ -4,11 +4,21 @@
 body {
   font-family: 'Noto Sans KR', sans-serif;
   color: #191919;
+  background-color: darkslateblue;
+  background-color: darkcyan;
+  /* background-color: cornflowerblue; */
   margin: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
 }
 
@@ -16,7 +26,101 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 2rem;
+  padding: 1rem 2rem;
+  width: 700px;
+  background-color: white;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 270px;
+  /* border: 1px solid black; */
+}
+
+/* 
+label {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin: 2.5px;
+  border: 1px solid #ff7272;
+  color: #ff7272;
+} */
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] + label {
+  /* 드래그 방지 */
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+
+  /* 스타일링 */
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin: 2.5px;
+  border: 1px solid #ff7272;
+  color: #ff7272;
+}
+
+input[type='checkbox']:checked + label {
+  background-color: #363636;
+  border: 1px solid #363636;
+  color: white;
+}
+
+form input[type='button'] {
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 2.5px;
+  margin-top: 0.5rem;
+  outline: none;
+}
+
+#check-buy-btn {
+  border: 1px solid #ff7272;
+  color: #ff7272;
+  padding: 0.5rem;
+}
+
+#check-buy-btn.active {
+  background-color: #ff7272;
+  color: white;
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+}
+
+.button-box input[type='button'] {
+  border: 1px solid #919191;
+  color: #919191;
+}
+
+.button-box input[type='button']:active {
+  background-color: #919191;
+  color: white;
 }
 
 #result {
@@ -48,11 +152,20 @@ main {
 
 #logo span:last-child {
   color: #009ee2;
+  /* font-size: 28px; */
+  margin-left: 5px;
 }
 
-h2 {
+#title {
   text-align: center;
   font-size: 20px;
+}
+
+#date {
+  font-size: 14px;
+  font-weight: lighter;
+  color: gray;
+  text-align: center;
 }
 
 #plus-icon {

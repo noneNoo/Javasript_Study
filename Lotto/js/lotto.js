@@ -1,6 +1,9 @@
-// 공을 그릴 부모태그를 가져오기
-// const resultElem = document.querySelector('#win-balls');
-// const bonusElem = document.querySelector('#bonus-ball');
+// 날짜
+const today = new Date();
+
+document.getElementById('year').innerText = today.getFullYear();
+document.getElementById('month').innerText = today.getMonth();
+document.getElementById('day').innerText = today.getDay();
 
 // 공 자체를 가져오기
 const winballElems = document.querySelectorAll('.winball');
@@ -38,9 +41,9 @@ winNums.sort((prev, curr) => {
 });
 
 // html에 공을 그려주는 함수
-// 인자로 ballElement를 하나씩 받고
+// 인자로 공element를 하나씩 받고
 // 보너스번호, 당첨번호 array를 받고
-// array index를 받는다
+// array의 index를 받는다
 function paintBall(ballElem, arrayName, index) {
   const ballNumber = arrayName[index];
   ballElem.classList.remove('question');
@@ -61,12 +64,14 @@ function paintBall(ballElem, arrayName, index) {
   ballElem.innerHTML = arrayName[index];
 }
 
+// 화면에 0.5초에 한개씩 공 그려주기
 winballElems.forEach((ballElem, index) => {
   setTimeout(() => {
     paintBall(ballElem, winNums, index);
   }, 500 * (index + 1));
 });
 
+// 보너스 공은 3.5초째에 그려주기
 setTimeout(() => {
   paintBall(bonusballElem, bonusBallNum, 0);
 }, 3500);
