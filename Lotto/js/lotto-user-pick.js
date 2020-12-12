@@ -121,6 +121,7 @@ function paintBuyPage() {
     userPickNumber = [];
 
     buyBtn.classList.remove('active');
+    buyFlag = false;
   }
 
   // 다시 선택 버튼 클릭시 발생 이벤트
