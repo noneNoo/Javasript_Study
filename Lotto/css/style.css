@@ -30,10 +30,11 @@ main {
   padding: 1rem 2rem;
   width: 500px;
   background-color: white;
+  border-radius: 4px;
 }
 
 form {
-  margin-top: 1rem;
+  margin: 1rem;
   display: flex;
   flex-wrap: wrap;
   width: 270px;
@@ -102,6 +103,7 @@ form input[type='button'] {
   margin: 2.5px;
   margin-top: 0.5rem;
   outline: none;
+  border-radius: 2px;
 }
 
 #check-buy-btn {
@@ -166,6 +168,11 @@ form input[type='button'] {
   font-size: 16px;
   text-align: center;
   margin-bottom: 0.5rem;
+}
+
+.result-sub {
+  font-size: 14px;
+  margin-bottom: 1rem;
 }
 
 .balls {

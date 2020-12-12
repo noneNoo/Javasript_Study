@@ -2,6 +2,7 @@
 let winNums = [];
 let bonusBallNum = [];
 let myNums = [];
+let overlapNumber = [];
 
 // 랜덤한 번호를 추출하는 함수
 function createWinNums() {
@@ -35,6 +36,10 @@ function createWinNums() {
     // return하는 값이 0보다 크면 순서를 바꾼다
     return prev - curr;
   });
+
+  // 내 번호와 당첨번호의 교집합
+  overlapNumber = myNums.filter((element) => !winNums.includes(element));
+  console.log(overlapNumber);
 }
 
 // 결과 페이지의 html 뼈대를 만들어주는 함수
@@ -125,13 +130,19 @@ function PaintResultPage() {
     myResultDiv.appendChild(myResultArticle);
   }
 
+  const overlapContainer = document.createElement('h3');
+  overlapContainer.classList.add('result-sub');
+  overlapContainer.innerHTML = `${overlapNumber.length}개 일치!`;
+
   // 조립
   contentContainer.appendChild(myResultDiv);
+  contentContainer.appendChild(overlapContainer);
 
   // 전부 조립한 후에 결과를 출력하는 함수 실행
   paintWinballResult();
 
   // 내 번호 색상 입히기
+  // 위치 이상해
   document.querySelectorAll('.myball').forEach((ballElem, index) => {
     paintBall(ballElem, myNums, index);
   });
