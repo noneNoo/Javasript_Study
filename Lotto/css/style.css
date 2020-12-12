@@ -27,7 +27,7 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 1rem 2rem;
-  width: 700px;
+  width: 500px;
   background-color: white;
 }
 
@@ -86,6 +86,12 @@ input[type='checkbox']:checked + label {
   background-color: #363636;
   border: 1px solid #363636;
   color: white;
+}
+
+input[type='checkbox'] + label.disabled {
+  background-color: lightgray;
+  color: white;
+  border: 1px solid lightgray;
 }
 
 form input[type='button'] {

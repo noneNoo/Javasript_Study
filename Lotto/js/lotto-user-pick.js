@@ -41,7 +41,9 @@ function paintBuyPage() {
     label.htmlFor = number;
     label.innerHTML = number;
 
+    // 체크박스 클릭이벤트
     label.addEventListener('click', function (e) {
+      const clickFlag = !e.target.control.disabled;
       const targetNumber = parseInt(e.target.htmlFor);
 
       // 같은 번호가 다시 클릭되었을 시
@@ -56,8 +58,29 @@ function paintBuyPage() {
             break;
           }
         }
-      } else {
+      } else if (clickFlag) {
         userPickNumber.push(targetNumber);
+      }
+
+      const labels = document.querySelectorAll('label');
+      // 6개가 전부 클릭되었을시
+      if (userPickNumber.length === 6) {
+        // 두 배열을 비교하여 겹치지 않는 39개의 배열을 반환
+        const disabledNumber = userCandidate.filter(
+          (element) => !userPickNumber.includes(element)
+        );
+        // 39개의 배열에 전부 체크 비활성화 시키기
+        disabledNumber.forEach((element) => {
+          labels[element - 1].control.disabled = true;
+          labels[element - 1].classList.add('disabled');
+        });
+      }
+      // 5개가 선택되었을 시
+      if (userPickNumber.length === 5) {
+        labels.forEach((element) => {
+          element.control.disabled = false;
+          element.classList.remove('disabled');
+        });
       }
 
       console.log(userPickNumber);
