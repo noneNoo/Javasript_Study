@@ -55,6 +55,7 @@ function PaintResultPage() {
   // 결과 볼 컨테이너 생성
   const winBallsDiv = document.createElement('div');
   winBallsDiv.id = 'win-balls';
+  winBallsDiv.classList.add('balls');
 
   // 물음표 모양의 article 6개 생성
   for (let i = 0; i < winNums.length; i++) {

@@ -25,6 +25,7 @@ h3 {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
   width: 500px;
@@ -130,18 +131,44 @@ form input[type='button'] {
   color: white;
 }
 
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #result {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #fafafa;
-  height: 40px;
-  padding: 1rem 3rem;
+  padding: 1rem;
+  width: 462px;
   border-radius: 1rem;
   margin: 1rem 0;
-  width: 446px;
+  flex-wrap: wrap;
 }
 
-#win-balls {
+#my-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ebebeb;
+  padding: 1rem;
+  width: 462px;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.result-title {
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.balls {
   display: flex;
   justify-content: center;
 }
