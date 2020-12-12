@@ -7,7 +7,7 @@ const userCandidate = Array(45)
   .map((arr, index) => index + 1);
 
 // 유저가 고른 번호를 담을 배열
-const userPickNumber = [];
+let userPickNumber = [];
 
 // 컨텐츠 컨테이너를 초기화시키고 새 타이틀을 띄워주는 함수
 function contentReset(newTitleName) {
@@ -95,11 +95,27 @@ function paintBuyPage() {
   const buttonDiv = document.createElement('div');
   buttonDiv.className = 'button-box';
 
-  // 취소버튼 생성
+  // 다시 선택 버튼 생성
   const removeBtn = document.createElement('input');
   removeBtn.type = 'button';
   removeBtn.id = 'remove-check-btn';
-  removeBtn.value = '선택취소';
+  removeBtn.value = '다시선택';
+
+  // 다시 선택 함수
+  function resetUserPick() {
+    const labels = document.querySelectorAll('label');
+    labels.forEach((element) => {
+      element.control.disabled = false;
+      element.control.checked = false;
+      element.classList.remove('disabled');
+    });
+    userPickNumber = [];
+  }
+
+  // 다시 선택 버튼 클릭시 발생 이벤트
+  removeBtn.addEventListener('click', function () {
+    resetUserPick();
+  });
 
   // 자동버튼 생성
   const autoBtn = document.createElement('input');
