@@ -107,6 +107,7 @@ form input[type='button'] {
   border: 1px solid #ff7272;
   color: #ff7272;
   padding: 0.5rem;
+  transition: 0.5s;
 }
 
 #check-buy-btn.active {

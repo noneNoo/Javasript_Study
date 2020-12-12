@@ -22,6 +22,9 @@ function contentReset(newTitleName) {
 function paintBuyPage() {
   contentReset('구매하기');
 
+  // 구매 플래그
+  let buyFlag = false;
+
   // 폼 태그의 생성과 추가
   const form = document.createElement('form');
   form.id = 'form';
@@ -65,6 +68,9 @@ function paintBuyPage() {
       const labels = document.querySelectorAll('label');
       // 6개가 전부 클릭되었을시
       if (userPickNumber.length === 6) {
+        // 구매 플래그 활성화
+        buyFlag = true;
+        buyBtn.classList.add('active');
         // 두 배열을 비교하여 겹치지 않는 39개의 배열을 반환
         const disabledNumber = userCandidate.filter(
           (element) => !userPickNumber.includes(element)
@@ -78,6 +84,9 @@ function paintBuyPage() {
       // 5개가 선택되었을 시
       if (userPickNumber.length === 5) {
         labels.forEach((element) => {
+          // 구매 플래그 비활성화
+          buyFlag = false;
+          buyBtn.classList.remove('active');
           element.control.disabled = false;
           element.classList.remove('disabled');
         });
@@ -110,6 +119,8 @@ function paintBuyPage() {
       element.classList.remove('disabled');
     });
     userPickNumber = [];
+
+    buyBtn.classList.remove('active');
   }
 
   // 다시 선택 버튼 클릭시 발생 이벤트
@@ -128,6 +139,15 @@ function paintBuyPage() {
   buyBtn.type = 'button';
   buyBtn.id = 'check-buy-btn';
   buyBtn.value = '구매하기';
+
+  buyBtn.addEventListener('click', function () {
+    if (buyFlag) {
+      createWinNums();
+      PaintResultPage();
+    } else {
+      alert('6개의 숫자를 선택해주세요!');
+    }
+  });
 
   // 버튼 html 조립
   buttonDiv.appendChild(removeBtn);
