@@ -57,8 +57,15 @@ function PaintResultPage() {
   winBallsDiv.id = 'win-balls';
   winBallsDiv.classList.add('balls');
 
+  // result title 태그의 생성
+  const resultTitle = document.createElement('h3');
+  resultTitle.classList = 'result-title';
+  resultTitle.innerHTML = '1등 번호';
+
+  resultDiv.appendChild(resultTitle);
+
   // 물음표 모양의 article 6개 생성
-  for (let i = 0; i < winNums.length; i++) {
+  for (let i = 0; i < 6; i++) {
     const winBallArticle = document.createElement('article');
     winBallArticle.className = 'ball winball question';
     winBallArticle.innerHTML = '?';
@@ -91,15 +98,67 @@ function PaintResultPage() {
   bonusBallContainerDiv.id = 'bonus-ball';
   const bonusBallArticle = document.createElement('article');
   bonusBallArticle.className = 'ball bounsball question';
+
+  // 조립
   bonusBallContainerDiv.appendChild(bonusBallArticle);
-
   resultDiv.appendChild(bonusBallContainerDiv);
-
-  // 태그 조립하기
   contentContainer.appendChild(resultDiv);
+
+  // -- 내 번호 화면에 출력
+
+  const myResultDiv = document.createElement('div');
+  myResultDiv.id = 'my-result';
+
+  const myResultTitle = document.createElement('h3');
+  myResultTitle.classList = 'result-title';
+  myResultTitle.innerHTML = '내 번호';
+
+  // 조립
+  myResultDiv.appendChild(myResultTitle);
+
+  // 리팩토링 필요 (동일부분 반복)
+  // 유저가 고른 공6개 보여줄 div 만들기
+  for (let i = 0; i < 6; i++) {
+    const myResultArticle = document.createElement('article');
+    myResultArticle.className = 'ball myball';
+    // 조립
+    myResultDiv.appendChild(myResultArticle);
+  }
+
+  // 조립
+  contentContainer.appendChild(myResultDiv);
 
   // 전부 조립한 후에 결과를 출력하는 함수 실행
   paintWinballResult();
+
+  // 내 번호 색상 입히기
+  document.querySelectorAll('.myball').forEach((ballElem, index) => {
+    paintBall(ballElem, myNums, index);
+  });
+}
+
+// html에 공을 그려주는 함수
+// 인자로 공element를 하나씩 받고
+// 보너스번호, 당첨번호 array를 받고
+// array의 index를 받는다
+function paintBall(ballElem, arrayName, index) {
+  const ballNumber = arrayName[index];
+  ballElem.classList.remove('question');
+  ballElem.classList.add('ball');
+
+  if (ballNumber <= 10) {
+    ballElem.classList.add('yellow');
+  } else if (ballNumber <= 20) {
+    ballElem.classList.add('blue');
+  } else if (ballNumber <= 30) {
+    ballElem.classList.add('red');
+  } else if (ballNumber <= 40) {
+    ballElem.classList.add('black');
+  } else {
+    ballElem.classList.add('green');
+  }
+
+  ballElem.innerHTML = arrayName[index];
 }
 
 // winball의 값을 받아와 결과를 출력하는 함수
@@ -107,30 +166,6 @@ function paintWinballResult() {
   // 공 자체를 가져오기
   const winballElems = document.querySelectorAll('.winball');
   const bonusballElem = document.querySelector('.bounsball');
-
-  // html에 공을 그려주는 함수
-  // 인자로 공element를 하나씩 받고
-  // 보너스번호, 당첨번호 array를 받고
-  // array의 index를 받는다
-  function paintBall(ballElem, arrayName, index) {
-    const ballNumber = arrayName[index];
-    ballElem.classList.remove('question');
-    ballElem.classList.add('ball');
-
-    if (ballNumber <= 10) {
-      ballElem.classList.add('yellow');
-    } else if (ballNumber <= 20) {
-      ballElem.classList.add('blue');
-    } else if (ballNumber <= 30) {
-      ballElem.classList.add('red');
-    } else if (ballNumber <= 40) {
-      ballElem.classList.add('black');
-    } else {
-      ballElem.classList.add('green');
-    }
-
-    ballElem.innerHTML = arrayName[index];
-  }
 
   // 화면에 0.5초에 한개씩 공 그려주기
   winballElems.forEach((ballElem, index) => {
