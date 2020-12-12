@@ -6,6 +6,9 @@ const userCandidate = Array(45)
   .fill()
   .map((arr, index) => index + 1);
 
+// 유저가 고른 번호를 담을 배열
+const userPickNumber = [];
+
 // 컨텐츠 컨테이너를 초기화시키고 새 타이틀을 띄워주는 함수
 function contentReset(newTitleName) {
   contentContainer.innerHTML = '';
@@ -37,6 +40,28 @@ function paintBuyPage() {
     const label = document.createElement('label');
     label.htmlFor = number;
     label.innerHTML = number;
+
+    label.addEventListener('click', function (e) {
+      const targetNumber = parseInt(e.target.htmlFor);
+
+      // 같은 번호가 다시 클릭되었을 시
+      if (e.target.control.checked) {
+        // 배열에서 지워야할 번호
+        const deleteNumber = targetNumber;
+        for (let i = 0; i < userPickNumber.length; i++) {
+          // 지워야 할 번호와 중복되는 번호를 찾기
+          if (userPickNumber[i] === deleteNumber) {
+            // 지워주기
+            userPickNumber.splice(i, 1);
+            break;
+          }
+        }
+      } else {
+        userPickNumber.push(targetNumber);
+      }
+
+      console.log(userPickNumber);
+    });
 
     // form태그에 추가
     form.appendChild(inputCheckbox);
